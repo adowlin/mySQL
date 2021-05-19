@@ -1,1 +1,33 @@
 mysql> notee
+mysql> select Playlist.Name as Playlist, Track.Name as Name, Title as Album, Artist.Name as Artist from PlaylistTrack inner join Playlist on PlaylistTrack.PlaylistId = Playlist.PlaylistId inner join Track on PlaylistTrack.TrackId = Track.TrackId inner join Album on Track.AlbumId = Album.AlbumId inner join Artist on Album.ArtistId = Artist.ArtistId where PlaylistTrack.PlaylistId = 16;
++----------+-------------------------+-------------------+---------------------+
+| Playlist | Name                    | Album             | Artist              |
++----------+-------------------------+-------------------+---------------------+
+| Grunge   | Man In The Box          | Facelift          | Alice In Chains     |
+| Grunge   | Smells Like Teen Spirit | Nevermind         | Nirvana             |
+| Grunge   | In Bloom                | Nevermind         | Nirvana             |
+| Grunge   | Come As You Are         | Nevermind         | Nirvana             |
+| Grunge   | Lithium                 | Nevermind         | Nirvana             |
+| Grunge   | Drain You               | Nevermind         | Nirvana             |
+| Grunge   | On A Plain              | Nevermind         | Nirvana             |
+| Grunge   | Evenflow                | Ten               | Pearl Jam           |
+| Grunge   | Alive                   | Ten               | Pearl Jam           |
+| Grunge   | Jeremy                  | Ten               | Pearl Jam           |
+| Grunge   | Daughter                | Vs.               | Pearl Jam           |
+| Grunge   | Outshined               | A-Sides           | Soundgarden         |
+| Grunge   | Black Hole Sun          | A-Sides           | Soundgarden         |
+| Grunge   | Plush                   | Core              | Stone Temple Pilots |
+| Grunge   | Hunger Strike           | Temple of the Dog | Temple of the Dog   |
++----------+-------------------------+-------------------+---------------------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT Playlist.Name as Playlist, COUNT(*) From Playlist INNER JOIN PlaylistTrack on Playlist.PlaylistId = PlaylistTrack.PlaylistId  GROUP BY Playlist HAVING count(*) = 1;
++--------------+----------+
+| Playlist     | COUNT(*) |
++--------------+----------+
+| On-The-Go 1  |        1 |
+| Music Videos |        1 |
++--------------+----------+
+2 rows in set (0.01 sec)
+
+mysql> notee
