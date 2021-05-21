@@ -1,4 +1,5 @@
 import os
+import datetime
 import pymysql
 
 # Get username from workspace
@@ -11,10 +12,9 @@ connection = pymysql.connect(host='localhost',
 try:
     # Run a query
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM Artist;"
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        print(result)
+        cursor.execute("UPDATE Friends SET age = %s where name = %s;",
+                        (23, 'Bob'))
+        connection.commit()
 finally:
     # Close the connection, regardless of whether the above was successful
     connection.close()
